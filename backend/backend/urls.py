@@ -19,6 +19,8 @@ from django.urls import path, include
 from app1.views import index_page
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
+from users.views import RegistrationUserView
+
 urlpatterns = [
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
@@ -27,4 +29,5 @@ urlpatterns = [
     path('api-auth', include('rest_framework.urls')),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
+    path('user/registration/', RegistrationUserView.as_view(), name='registr')
 ]
